@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer mPlayer;
     private CountDownTimer mCountDownTimer;
 
-    Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
 
     @Override
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if (mTimeToGo == 0){
                         alertFinish();
-                        vibrator.cancel();                       
+             //           vibrator.cancel();
 
                         if ("Fight".equals(status)) {
                             status = "relax";
@@ -120,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 replayLayout();
 
                 alertFinish();
-                vibrator.cancel();
+              //  vibrator.cancel();
 
             }
         }.start();
@@ -186,10 +185,15 @@ public class MainActivity extends AppCompatActivity {
 
         mPlayer.start();
 
-        long mills = 5000L;
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+        long mills = 2000L;
         vibrator.vibrate(mills);
 
 
+
+
+      //  vibrator.cancel();
 
 
     }
