@@ -16,7 +16,7 @@ import android.os.CountDownTimer;
 public class MainActivity extends AppCompatActivity {
 
     private int mTimeToGo, round, timeFight=0,timeRelax,countRound;
-    private String status="Fight";
+    private String status="Бой";
 
     MediaPlayer mPlayer;
     private CountDownTimer mCountDownTimer;
@@ -50,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
             timer.setText("" + status);
 
             TextView statusid = (TextView) findViewById(R.id.statusid);
-            statusid.setText("");
+            View q = findViewById(R.id.statusid);
+            q.setVisibility(View.GONE);
+
 
             TextView countroundid = (TextView) findViewById(R.id.countroundid);
             countroundid.setText("Осталось раундов");
@@ -86,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
                         alertFinish();
              //           vibrator.cancel();
 
-                        if ("Fight".equals(status)) {
-                            status = "relax";
+                        if ("Бой".equals(status)) {
+                            status = "отдых";
                             mTimeToGo = timeRelax;
                             round--;
 
@@ -96,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }else {
                             mTimeToGo = timeFight;
-                            status = "Fight";
+                            status = "Бой";
                         }
 
                         TextView timeRelaxid = (TextView)findViewById(R.id.timeRelaxid);
@@ -158,8 +160,10 @@ public class MainActivity extends AppCompatActivity {
         p.setVisibility(View.VISIBLE);
 
         replayLayout();
+        timeFight=0;
 
-
+        View q = findViewById(R.id.statusid);
+        q.setVisibility(View.VISIBLE);
 
 
     }
@@ -173,8 +177,6 @@ public class MainActivity extends AppCompatActivity {
 
         View p = findViewById(R.id.start);
         p.setVisibility(View.VISIBLE);
-
-
 
     }
 
@@ -190,16 +192,10 @@ public class MainActivity extends AppCompatActivity {
         long mills = 2000L;
         vibrator.vibrate(mills);
 
-
-
-
       //  vibrator.cancel();
 
 
     }
-
-
-
 
 
 }
